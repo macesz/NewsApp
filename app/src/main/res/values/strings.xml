@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">NewsListApp</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="apiUrl" formatted="false"><![CDATA[http://content.guardianapis.com/search?section=lifeandstyle&order-by=newest&use-date=published&show-references=author&show-fields=trailText,thumbnail&q=food%20and%20drink&api-key=f8d55cbf-5341-4c67-ae61-fdf25615d23f]]></string>
+</resources>
