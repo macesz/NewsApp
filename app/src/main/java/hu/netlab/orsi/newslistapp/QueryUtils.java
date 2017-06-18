@@ -157,14 +157,14 @@ public class QueryUtils {
 
             JSONObject response = baseJsonResponse.getJSONObject("response");
 
-            // Extract the JSONArray associated with the key called "items",
+            // Extract the JSONArray associated with the key called "results",
             // which represents a list of features.
             JSONArray results = response.getJSONArray("results");
 
             // For each news item in the results, create an {@link newItem} object
             for (int i = 0; i < results.length(); i++) {
 
-                // Get a single book at position i within the list of newitem
+                // Get a single item at position i within the list of newsitem
                 JSONObject currentItem = results.getJSONObject(i);
 
                 String title = currentItem.getString("webTitle");

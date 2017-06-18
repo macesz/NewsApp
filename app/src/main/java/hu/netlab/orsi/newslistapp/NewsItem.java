@@ -1,5 +1,6 @@
 package hu.netlab.orsi.newslistapp;
 
+
 import java.util.Date;
 
 public class NewsItem {

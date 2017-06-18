@@ -26,10 +26,10 @@ public class NewsFragment extends Fragment implements LoaderCallbacks<List<NewsI
 
     ArrayList<NewsItem> listitems = new ArrayList<>();
     RecyclerView MyRecyclerView;
-
     LoaderManager loaderManager;
 
     public NewsFragment() {
+
         // Required empty public constructor
     }
 
@@ -67,6 +67,8 @@ public class NewsFragment extends Fragment implements LoaderCallbacks<List<NewsI
             // Initialize the loader. Pass in the int ID constant defined above and pass in null for
             // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
             // because this activity implements the LoaderCallbacks interface).
+            //Prepare the loader.  Either re-connect with an existing one,
+            // or start a new one.
             loaderManager.initLoader(LOADER_ID, null, this);
 
         }
@@ -78,7 +80,7 @@ public class NewsFragment extends Fragment implements LoaderCallbacks<List<NewsI
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_news, container, false);
 
-        MyRecyclerView = (RecyclerView) view.findViewById(R.id.list);
+        MyRecyclerView = view.findViewById(R.id.list);
         MyRecyclerView.setHasFixedSize(true);
         LinearLayoutManager MyLayoutManager = new LinearLayoutManager(getActivity());
         MyLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -92,10 +94,14 @@ public class NewsFragment extends Fragment implements LoaderCallbacks<List<NewsI
 
     @Override
     public android.content.Loader<List<NewsItem>> onCreateLoader(int i, Bundle bundle) {
+        // This is called when a new Loader needs to be created. Instantiate and return a new Loader for the given ID.
+
         return new NewsLoader(getActivity());
     }
     @Override
     public void onLoadFinished(android.content.Loader<List<NewsItem>> loader, List<NewsItem> newsItems) {
+        //Called when a previously created loader has finished its load.
+
         listitems.clear();
         if(newsItems !=null && !newsItems.isEmpty()) {
             listitems.addAll(newsItems);
@@ -117,6 +123,7 @@ public class NewsFragment extends Fragment implements LoaderCallbacks<List<NewsI
 
     @Override
     public void onLoaderReset(android.content.Loader<List<NewsItem>> loader) {
+        //Called when a previously created loader is being reset, thus making its data unavailable.
         listitems.clear();
     }
 
